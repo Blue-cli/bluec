@@ -1,0 +1,23 @@
+{
+  "name": "blue-cli",
+  "version": "0.0.1",
+  "description": "CLI for building mini web project (mini-program/H5) easier without any framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "bluec": "cli.js"
+  },
+  "author": "math.lee@qq.com",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "clear": "^0.1.0",
+    "colors": "^1.2.4",
+    "commander": "^2.15.1",
+    "figlet": "^1.2.0",
+    "prompt": "^1.0.0",
+    "shelljs": "^0.8.2"
+  }
+}
