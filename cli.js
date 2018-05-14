@@ -13,7 +13,10 @@ program
 	.description(about.getDescription());
 
 program
-	.command('info', 'Show the CLI info', { isDefault: true });
+	.command('info')
+	.action(function () {
+		about.showInfo();
+	});
 
 program
 	.command('init <name>')

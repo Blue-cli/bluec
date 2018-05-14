@@ -1,5 +1,5 @@
 {
-	"description": "项目配置文件。",
+	"description": "__MINI_PROGRAM_DESC__",
 	"packOptions": {
 		"ignore": []
 	},
@@ -11,9 +11,9 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.0",
-	"appid": "touristappid",
-	"projectname": "x",
+	"libVersion": "__MINI_PROGRAM_LIB__",
+	"appid": "__MINI_PROGRAM_APPID__",
+	"projectname": "__MINI_PROGRAM_NAME__",
 	"condition": {
 		"search": {
 			"current": -1,
