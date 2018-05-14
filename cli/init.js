@@ -81,12 +81,12 @@ function askQuestions (folderName, template) {
 		name: 'preprocessor',
 		type: 'list',
 		message: 'Choose your favorite preprocessor:',
-		choices: ['SCSS', 'SASS', 'LESS', 'Stylus'],
+		choices: ['SCSS', 'SASS', 'LESS'],
 		validate: function( value ) {
 			if (value.length) {
 				return true;
 			} else {
-				return 'Please choose your lib version.';
+				return 'Please choose your favorite preprocessor.';
 			}
 		}
 	});
@@ -97,7 +97,8 @@ function askQuestions (folderName, template) {
 function generateWechatMiniProgram (name, answers) {
 
 	const currTemplatePath = `${templateFolder}/src/${template}`,
-			currFolderPath = `${localFolder}/${name}/src`;
+			currFolderPath = `${localFolder}/${name}/src`,
+			preprocessor = answers.preprocessor.toLowerCase();
 
 	const miniprogramConfigFileName = 'project.config.json';
 
@@ -121,6 +122,9 @@ function generateWechatMiniProgram (name, answers) {
 			sed('-i', '__MINI_PROGRAM_DESC__', answers.description, miniprogramConfigFileName);
 
 			sed('-i', '__MINI_PROGRAM_LIB__', answers.libversion, miniprogramConfigFileName);
+
+			// Rename css file
+			mv('app.wxss', `app.${preprocessor}`);
 		}
 	} else {
 		console.log('The folder exists');
@@ -129,7 +133,7 @@ function generateWechatMiniProgram (name, answers) {
 
 module.exports = function(folderName, options) {
 	template = options.template;
-		
+
 	askQuestions(folderName, template)
 
 	.then(answers => {
