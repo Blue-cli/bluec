@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "CLI for building mini web project (mini-program/H5) easier without any framework",
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "mocha -R spec",
+    "build": "webpack --config webpack.config.js",
+    "sass": "node-sass src/ --recursive --output dist/"
   },
   "bin": {
     "bluec": "cli.js"
@@ -26,5 +28,11 @@
     "inquirer": "^5.2.0",
     "prompt": "^1.0.0",
     "shelljs": "^0.8.2"
+  },
+  "devDependencies": {
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3"
   }
 }

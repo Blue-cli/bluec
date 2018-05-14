@@ -25,4 +25,11 @@ program
 	.option('-t, --template <template>', 'project template', /^(mp|h5)$/i, 'mp')
 	.action(initCmd);
 
+program
+	.command('build')
+	.description('Build project')
+	.alias('b')
+	.option('-w, --watch', 'Watch Mode')
+	.action(buildCmd);
+
 program.parse(process.argv);
