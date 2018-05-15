@@ -123,12 +123,33 @@ function generateWechatMiniProgram (name, answers) {
 
 			sed('-i', '__MINI_PROGRAM_LIB__', answers.libversion, miniprogramConfigFileName);
 
-			// Rename css file
-			mv('app.wxss', `app.${preprocessor}`);
+			// Rename style file
+			renameFileName('.wxss', `.${preprocessor}`);
 		}
 	} else {
 		console.log('The folder exists');
 	}
+}
+
+function renameFileName (extname, extnameReplaced) {
+
+	// find all files
+	find('.')
+
+	// find out ext files
+	.filter(function(file) {
+		return file.match(new RegExp(`\\${extname}$`)); 
+	})
+
+	// rename all files
+	.forEach(function (file) {
+		const filenameWithExt = path.basename(file);
+		const filename = path.basename(file, extname);
+		const filenameReplaced = file.replace(filenameWithExt, `${filename}${extnameReplaced}`);
+
+		mv(file, filenameReplaced);
+	});
+
 }
 
 module.exports = function(folderName, options) {
